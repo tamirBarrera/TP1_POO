@@ -5,11 +5,10 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter
-@Setter
 @ToString
 
 public abstract class Cliente {
-    private int numeroCliente;
+    private final int numeroCliente;
 
     public Cliente(int numeroCliente) {
         this.numeroCliente = numeroCliente;

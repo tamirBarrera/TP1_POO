@@ -15,8 +15,8 @@ public class CuentaConvertibilidad extends Cuenta {
     private double saldoDolares;
     private double saldoPesos;
 
-    public CuentaConvertibilidad(int numeroCuenta double saldoPesos, double saldoDolares, Cliente cliente) {
-        super(cuenta.getNumeroCuenta());
+    public CuentaConvertibilidad(int numeroCuenta, double saldoPesos, double saldoDolares, Cliente cliente) {
+        super(numeroCuenta, saldoPesos, cliente);
         this.saldoPesos = saldoPesos;
         this.saldoDolares = saldoDolares;
         if (!(cliente instanceof ClienteEmpresa)){
@@ -51,8 +51,8 @@ public class CuentaConvertibilidad extends Cuenta {
         System.out.printf("Depósito realizado de manera exitosa!!!. Nuevo saldo: %.2f", getSaldoPesos());
     }
 
-    public void convertirPesosADolares(double monto, double tasaConverion) {
-        if (monto > 0 && saldoPesos >= monto) {
+    public void convertirPesosADolares(double monto, double tasaConverion){
+        if (monto > 0 && saldoPesos >= monto){
             double dolaresConvertidos = monto / tasaConverion;
             this.saldoPesos -= monto;
             this.saldoDolares += dolaresConvertidos;
@@ -62,11 +62,12 @@ public class CuentaConvertibilidad extends Cuenta {
         } else {
             System.out.println("Saldo insuficiente para realizar la conversión.");
         }
-
+        
+        
     }
 
-    public void convertirDolaresAPesos(double monto, double tasaConverion) {
-        if (monto > 0 && saldoDolares >= monto) {
+    public void convertirDolaresAPesos(double monto, double tasaConverion){
+        if (monto > 0 && saldoDolares >= monto){
             double pesosConvertidos = monto * tasaConverion;
             this.saldoDolares -= monto;
             this.saldoPesos += pesosConvertidos;
@@ -76,7 +77,9 @@ public class CuentaConvertibilidad extends Cuenta {
         } else {
             System.out.println("Saldo insuficiente para realizar la conversión.");
         }
-
+        
     }
+
+
 
 }

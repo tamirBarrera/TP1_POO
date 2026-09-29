@@ -1,5 +1,6 @@
 package ar.com.trabajo.practico.banco.relaciones;
 
+import ar.com.trabajo.practico.banco.herencia.Cliente;
 import ar.com.trabajo.practico.banco.herencia.Cuenta;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,15 +14,17 @@ public class CuentaCorriente extends Cuenta {
     private double saldoPesos;
     private double descubierto;
 
-    public CuentaCorriente(int numeroCuenta, double saldoPesos, double descubierto) {
-        super(numeroCuenta);
+    public CuentaCorriente(int numeroCuenta, double saldoPesos, double descubierto, Cliente clienteAsociado) {
+        super(numeroCuenta, saldoPesos, clienteAsociado );
         this.saldoPesos = saldoPesos;
         this.descubierto = descubierto;
     }
 
     public void depositarCheque(Cheque cheque) {
-        depositarEfectivo(monto);
-        System.out.printf("Depósito de %.2f realizado exitosamente. Saldo actual: %.2f%n", monto, getSaldoPesos());
+        if (cheque.getMonto() > 0) {
+            depositarEfectivo(cheque.getMonto());
+            System.out.printf("Depósito de %.2f realizado exitosamente. Saldo actual: %.2f%n", cheque.getMonto(), getSaldoPesos());
+        }
     }
 
     public void extraerEfectivo(double saldoPesos) {
