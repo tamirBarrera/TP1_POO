@@ -14,8 +14,8 @@ public class CajaAhorro extends Cuenta {
     private double saldoPesos;
     private double tasaInteres;
 
-    public CajaAhorro(int numeroCuenta, double saldoPesos, double tasaInteres) {
-        super(numeroCuenta);
+    public CajaAhorro(int numeroCuenta, double saldoPesos, double tasaInteres, Cliente clienteAsociado) {
+        super(numeroCuenta, saldoPesos, clienteAsociado);
         this.saldoPesos = saldoPesos;
         this.tasaInteres = tasaInteres;
     }
