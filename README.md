@@ -1,12 +1,8 @@
-# Clases Abstractas: Cuenta y Cliente y Pilares de POO
-
-Este documento explica el rol y diseño de las clases abstractas `Cuenta` y `Cliente`, así como la aplicación práctica de los cuatro pilares de la Programación Orientada a Objetos (POO): abstracción, encapsulamiento, herencia y polimorfismo.
-
 ## Abstracción
 
 La abstracción consiste en identificar las características esenciales y comportamientos comunes de una entidad del mundo real o del dominio del problema, descartando los detalles específicos o irrelevantes para ese nivel de diseño.
 
-En el sistema, se modelan dos conceptos base abstractos:
+Se modelan dos conceptos base abstractos:
 - `Cliente`: representa a cualquier cliente del banco capturando lo esencial e invariable (como `numeroCliente`), sin entrar en detalles de si se trata de una persona física o una persona jurídica.
 - `Cuenta`: modela el concepto general de una cuenta bancaria con su identificador (`numeroCuenta`), el titular asociado (`clienteAsociado`) y el estado financiero (`saldoPesos`), además de definir que toda cuenta debe operar mediante depósitos y extracciones sin imponer cómo lo hace cada tipo específico.
 
@@ -31,7 +27,6 @@ En `Cuenta` y `Cliente` se aplica a través de modificadores de acceso:
 
 La herencia es el mecanismo por el cual una clase (subclase o clase hija) adquiere atributos y métodos de otra clase (superclase o clase padre), facilitando la reutilización de código y estableciendo una relación semántica de tipo "es un".
 
-En este modelo:
 - Las variantes específicas de cuentas (como `CuentaCorriente` o `CuentaConvertibilidad`) heredan de `Cuenta`. Heredan la gestión del titular, el número de cuenta y el saldo base, evitando duplicación de código.
 - Las variantes de clientes heredan de `Cliente`, compartiendo la identificación numérica base provista por la clase padre.
 
@@ -39,6 +34,5 @@ En este modelo:
 
 El polimorfismo es la capacidad que tienen objetos de diferentes clases de responder a un mismo mensaje o llamada a método, comportándose cada uno de acuerdo a su propia implementación.
 
-En este diseño se observa en dos aspectos clave:
 - Referencia polimórfica: `Cuenta` tiene un atributo de tipo `Cliente` (`clienteAsociado`). Esto permite que cualquier objeto cuya clase herede de `Cliente` pueda asociarse a una cuenta sin necesidad de acoplar la cuenta a un tipo de cliente específico.
 - Sobrescritura de métodos: al llamar a `depositarEfectivo` o `extraerEfectivo` sobre una referencia de tipo `Cuenta`, se ejecuta dinámicamente el comportamiento de la subclase concreta instanciada, adaptándose a las reglas particulares de cada tipo de cuenta.
