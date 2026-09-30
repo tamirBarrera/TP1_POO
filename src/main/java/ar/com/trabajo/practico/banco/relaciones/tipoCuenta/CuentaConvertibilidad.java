@@ -44,7 +44,7 @@ public class CuentaConvertibilidad extends CuentaCorriente {
         if (monto > 0 && saldoDolares >= monto) {
             saldoDolares -= monto;
             System.out.printf("Extracción de %.2f realizada exitosamente. Saldo actual: %.2f%n", monto,
-                    saldoPesos);
+                    getSaldoPesos());
         } else {
             throw new IllegalArgumentException("Saldo insuficiente para realizar la extracción.");
         }
