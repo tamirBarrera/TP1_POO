@@ -7,7 +7,7 @@ import ar.com.trabajo.practico.banco.relaciones.tipoCliente.ClienteIndividual;
 public class TestClienteIndividual {
 
     public static void main(String[] args) {
-        System.out.println("------Iniciando Pruebas------");
+        System.out.println("Pruebas cliente individual");
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese el nombre del cliente");

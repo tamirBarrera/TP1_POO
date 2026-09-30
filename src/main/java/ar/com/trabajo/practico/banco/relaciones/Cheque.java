@@ -21,16 +21,4 @@ public class Cheque {
         this.fechaPago = fechaPago;
     }
 
-    public double getMonto() {
-        return monto;
-    }
-
-    public String getBancoEmisor() {
-        return bancoEmisor;
-    }
-
-    public LocalDate getFechaPago() {
-        return fechaPago;
-    }
-
 }

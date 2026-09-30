@@ -13,12 +13,21 @@ import lombok.ToString;
 public class CuentaConvertibilidad extends CuentaCorriente {
 
     private double saldoDolares;
+    private double tasaConverion;
 
     public CuentaConvertibilidad(int numeroCuenta, double saldoPesos, double saldoDolares, Cliente clienteAsociado,
-            double descubierto) {
+            double descubierto, double tasaConverion) {
+        super(numeroCuenta, saldoPesos, descubierto, clienteAsociado);
+        if (saldoPesos < 0) {
+            throw new IllegalArgumentException("El saldo no puede ser negativo.");
+        }
+        if (saldoDolares < 0) {
+            throw new IllegalArgumentException("El saldo en dolares no puede ser negativo.");
+        }
 
-        super(numeroCuenta, saldoPesos, 0.0, clienteAsociado);
         this.saldoDolares = saldoDolares;
+        this.tasaConverion = 1500.60;
+
         if (!(clienteAsociado instanceof ClienteEmpresa)) {
             throw new IllegalArgumentException("La cuenta convertibilidad solo puede ser abierta por empresas");
         }
@@ -35,46 +44,54 @@ public class CuentaConvertibilidad extends CuentaCorriente {
         if (monto > 0 && saldoDolares >= monto) {
             saldoDolares -= monto;
             System.out.printf("Extracción de %.2f realizada exitosamente. Saldo actual: %.2f%n", monto,
-                    getSaldoPesos());
+                    saldoPesos);
         } else {
-            System.out.println("Saldo insuficiente para realizar la extracción.");
+            throw new IllegalArgumentException("Saldo insuficiente para realizar la extracción.");
         }
     }
 
-    public void extraerEfectivo(double monto) {
-        extraerEfectivo(monto);
-        System.out.printf("Extracción realizada de manera exitosa!!!. Nuevo saldo: %.2f", getSaldoPesos());
+    public void extraerEfectivo(double montoAextraer) {
+        if (montoAextraer <= 0) {
+            throw new IllegalArgumentException("El monto a extraer debe ser positivo.");
+        } else if (getSaldoPesos() + getDescubierto() < montoAextraer) {
+            throw new IllegalArgumentException("El monto a extraer es mayor al saldo disponible.");
+        } else {
+            setSaldoPesos(getSaldoPesos() - montoAextraer);
+            System.out.printf("Extracción realizada de manera exitosa!!!. Nuevo saldo: %.2f", getSaldoPesos());
+        }
     }
 
-    public void depositarEfectivo(double monto) {
-        depositarEfectivo(monto);
+    public void depositarEfectivo(double montoAdepositar) {
+        if (montoAdepositar <= 0) {
+            throw new IllegalArgumentException("El monto a depositar debe ser positivo.");
+        }
+        setSaldoPesos(saldoPesos + montoAdepositar);
         System.out.printf("Depósito realizado de manera exitosa!!!. Nuevo saldo: %.2f", getSaldoPesos());
     }
 
     public void convertirPesosADolares(double monto, double tasaConverion) {
-        if (monto > 0 && getSaldoPesos() >= monto) {
+        if (monto > 0 && saldoPesos >= monto) {
             double dolaresConvertidos = monto / tasaConverion;
-            setSaldoPesos(getSaldoPesos() - monto);
-            setSaldoDolares(getSaldoDolares() + dolaresConvertidos);
+            setSaldoPesos(saldoPesos - monto);
+            setSaldoDolares(saldoDolares + dolaresConvertidos);
 
             System.out.printf("Conversion de %.2f pesos a %.2f dolares realizada exitosamente. Nuevo saldo: %.2f",
-                    monto, dolaresConvertidos, getSaldoPesos());
+                    monto, dolaresConvertidos, saldoPesos);
         } else {
-            System.out.println("Saldo insuficiente para realizar la conversión.");
+            throw new IllegalArgumentException("Saldo insuficiente para realizar la conversión.");
         }
 
     }
 
     public void convertirDolaresAPesos(double monto, double tasaConverion) {
-        if (monto > 0 && getSaldoDolares() >= monto) {
+        if (monto > 0 && saldoDolares >= monto) {
             double pesosConvertidos = monto * tasaConverion;
-            setSaldoDolares(getSaldoDolares() - monto);
-            setSaldoPesos(getSaldoPesos() + pesosConvertidos);
-
+            setSaldoPesos(saldoPesos + pesosConvertidos);
+            setSaldoDolares(saldoDolares - monto);
             System.out.printf("Conversion de %.2f dolares a %.2f pesos realizada exitosamente. Nuevo saldo: %.2f",
-                    monto, pesosConvertidos, getSaldoDolares());
+                    monto, pesosConvertidos, saldoDolares);
         } else {
-            System.out.println("Saldo insuficiente para realizar la conversión.");
+            throw new IllegalArgumentException("Saldo insuficiente para realizar la conversión.");
         }
 
     }

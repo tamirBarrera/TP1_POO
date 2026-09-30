@@ -7,7 +7,7 @@ import ar.com.trabajo.practico.banco.relaciones.tipoCliente.ClienteEmpresa;
 public class TestClienteEmpresa {
 
     public static void main(String[] args) {
-        System.out.println("------Iniciando Pruebas------");
+        System.out.println("Pruebas cliente empresa");
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese razón social de la empresa");
