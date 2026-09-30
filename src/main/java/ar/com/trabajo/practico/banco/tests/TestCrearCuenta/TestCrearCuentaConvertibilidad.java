@@ -12,6 +12,7 @@ public class TestCrearCuentaConvertibilidad {
         Scanner sc = new Scanner(System.in);
         System.out.println("Bienvenido cliente, ingrese su numero de cuenta: ");
         int numeroCuenta = sc.nextInt();
+        sc.nextLine();
 
         double saldoPesos = 0;
         double descubierto = 200000;
@@ -23,25 +24,25 @@ public class TestCrearCuentaConvertibilidad {
         System.out.println("Desea realizar un deposito o extraccion? Y/N");
         String respuesta = sc.nextLine();
 
-        switch (respuesta) {
+        switch (respuesta.toUpperCase()) {
             case "Y":
                 System.out.println(
                         "Si desea realizar un deposito presione D, si desea realizar una extraccion presione E");
                 String respuesta2 = sc.nextLine();
-                switch (respuesta2) {
+                switch (respuesta2.toUpperCase()) {
                     case "D":
                         System.out.println("Ingrese el monto a depositar");
                         double monto = sc.nextDouble();
                         cuentaConvertibilidad.depositarEfectivo(monto);
                         System.out.println("El saldo actual es: " + cuentaConvertibilidad.getSaldoPesos());
-                        sc.nextDouble();
+                        sc.nextLine();
                         break;
                     case "E":
                         System.out.println("Ingrese el monto a extraer");
                         double monto2 = sc.nextDouble();
                         cuentaConvertibilidad.extraerEfectivo(monto2);
                         System.out.println("El saldo actual es: " + cuentaConvertibilidad.getSaldoPesos());
-                        sc.nextDouble();
+                        sc.nextLine();
                         break;
                     default:
                         System.out.println("Respuesta invalida.");

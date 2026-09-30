@@ -12,6 +12,7 @@ public class TestCrearCuentaCorriente {
         Scanner sc = new Scanner(System.in);
         System.out.println("Bienvenido cliente, ingrese su numero de cuenta: ");
         int numeroCuenta = sc.nextInt();
+        sc.nextLine();
 
         double saldoPesos = 0;
         double descubierto = 200000;
@@ -23,9 +24,10 @@ public class TestCrearCuentaCorriente {
         System.out.println("Desea realizar un deposito o extraccion? Y/N");
         String respuesta = sc.nextLine();
 
-        if (respuesta.toUpperCase() == "Y") {
-            System.out.println(
-                    "Si desea realizar un deposito presione D, si desea realizar una extraccion presione E");
+        if (respuesta.equalsIgnoreCase("Y")) {
+
+            System.out.println("Si desea realizar un deposito presione D, si desea realizar una extraccion presione E");
+
             String respuesta2 = sc.nextLine();
             switch (respuesta2.toUpperCase()) {
                 case "D":
@@ -44,7 +46,7 @@ public class TestCrearCuentaCorriente {
                     System.out.println("Respuesta invalida.");
                     break;
             }
-        } else if (respuesta.toUpperCase() == "N") {
+        } else if (respuesta.equalsIgnoreCase("N")) {
             System.out.println("Gracias por utilizar nuestros servicios.");
         } else {
             System.out.println("Respuesta invalida.");
