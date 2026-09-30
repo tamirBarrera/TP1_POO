@@ -1,7 +1,8 @@
-package ar.com.trabajo.practico.banco.relaciones;
+package ar.com.trabajo.practico.banco.relaciones.tipoCuenta;
 
 import ar.com.trabajo.practico.banco.herencia.Cliente;
 import ar.com.trabajo.practico.banco.herencia.Cuenta;
+import ar.com.trabajo.practico.banco.relaciones.Cheque;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,19 +12,18 @@ import lombok.ToString;
 @ToString(callSuper = true)
 
 public class CuentaCorriente extends Cuenta {
-    private double saldoPesos;
     private double descubierto;
 
     public CuentaCorriente(int numeroCuenta, double saldoPesos, double descubierto, Cliente clienteAsociado) {
-        super(numeroCuenta, saldoPesos, clienteAsociado );
-        this.saldoPesos = saldoPesos;
+        super(numeroCuenta, saldoPesos, clienteAsociado);
         this.descubierto = descubierto;
     }
 
     public void depositarCheque(Cheque cheque) {
         if (cheque.getMonto() > 0) {
             depositarEfectivo(cheque.getMonto());
-            System.out.printf("Depósito de %.2f realizado exitosamente. Saldo actual: %.2f%n", cheque.getMonto(), getSaldoPesos());
+            System.out.printf("Depósito de %.2f realizado exitosamente. Saldo actual: %.2f%n", cheque.getMonto(),
+                    getSaldoPesos());
         }
     }
 

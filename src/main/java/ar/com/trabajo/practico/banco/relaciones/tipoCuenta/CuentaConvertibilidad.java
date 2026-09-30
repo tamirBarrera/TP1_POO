@@ -1,7 +1,6 @@
 package ar.com.trabajo.practico.banco.relaciones.tipoCuenta;
 
 import ar.com.trabajo.practico.banco.herencia.Cliente;
-import ar.com.trabajo.practico.banco.herencia.Cuenta;
 import ar.com.trabajo.practico.banco.relaciones.tipoCliente.ClienteEmpresa;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,12 +14,13 @@ public class CuentaConvertibilidad extends CuentaCorriente {
 
     private double saldoDolares;
 
-    public CuentaConvertibilidad(int numeroCuenta, double saldoPesos, double saldoDolares, Cliente clienteAsociado) {
+    public CuentaConvertibilidad(int numeroCuenta, double saldoPesos, double saldoDolares, Cliente clienteAsociado,
+            double descubierto) {
 
-        super(numeroCuenta, saldoPesos, clienteAsociado);
+        super(numeroCuenta, saldoPesos, 0.0, clienteAsociado);
         this.saldoDolares = saldoDolares;
         if (!(clienteAsociado instanceof ClienteEmpresa)) {
-            System.out.println("La cuenta convertibilidad solo puede ser abierta por empresas");
+            throw new IllegalArgumentException("La cuenta convertibilidad solo puede ser abierta por empresas");
         }
 
     }
@@ -52,10 +52,10 @@ public class CuentaConvertibilidad extends CuentaCorriente {
     }
 
     public void convertirPesosADolares(double monto, double tasaConverion) {
-        if (monto > 0 && saldoPesos >= monto) {
+        if (monto > 0 && getSaldoPesos() >= monto) {
             double dolaresConvertidos = monto / tasaConverion;
-            this.saldoPesos -= monto;
-            this.saldoDolares += dolaresConvertidos;
+            setSaldoPesos(getSaldoPesos() - monto);
+            setSaldoDolares(getSaldoDolares() + dolaresConvertidos);
 
             System.out.printf("Conversion de %.2f pesos a %.2f dolares realizada exitosamente. Nuevo saldo: %.2f",
                     monto, dolaresConvertidos, getSaldoPesos());
@@ -66,10 +66,10 @@ public class CuentaConvertibilidad extends CuentaCorriente {
     }
 
     public void convertirDolaresAPesos(double monto, double tasaConverion) {
-        if (monto > 0 && saldoDolares >= monto) {
+        if (monto > 0 && getSaldoDolares() >= monto) {
             double pesosConvertidos = monto * tasaConverion;
-            this.saldoDolares -= monto;
-            this.saldoPesos += pesosConvertidos;
+            setSaldoDolares(getSaldoDolares() - monto);
+            setSaldoPesos(getSaldoPesos() + pesosConvertidos);
 
             System.out.printf("Conversion de %.2f dolares a %.2f pesos realizada exitosamente. Nuevo saldo: %.2f",
                     monto, pesosConvertidos, getSaldoDolares());

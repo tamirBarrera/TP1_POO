@@ -1,4 +1,4 @@
-package ar.com.trabajo.practico.banco.relaciones;
+package ar.com.trabajo.practico.banco.relaciones.tipoCliente;
 
 import ar.com.trabajo.practico.banco.herencia.Cliente;
 import lombok.Getter;
@@ -19,5 +19,8 @@ public class ClienteIndividual extends Cliente {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
-    }
+    } // Reusabilidad: Se reutiliza el constructor de la clase padre para obtener el
+      // numero de cliente
+      // Herencia: Se hereda el constructor de la clase padre
+      // Encapsulamiento: Se puede acceder a los atributos de la clase padre
 }

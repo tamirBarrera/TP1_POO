@@ -1,7 +1,7 @@
 package ar.com.trabajo.practico.banco.herencia;
 
 import lombok.Getter;
-import lombok.Setter;
+
 import lombok.ToString;
 
 @Getter
