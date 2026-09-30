@@ -1,4 +1,4 @@
-package ar.com.trabajo.practico.banco.relaciones;
+package ar.com.trabajo.practico.banco.relaciones.tipoCuenta;
 
 import ar.com.trabajo.practico.banco.herencia.Cliente;
 import ar.com.trabajo.practico.banco.herencia.Cuenta;
