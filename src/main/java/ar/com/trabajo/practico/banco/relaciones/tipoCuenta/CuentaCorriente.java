@@ -16,7 +16,11 @@ public class CuentaCorriente extends Cuenta {
 
     public CuentaCorriente(int numeroCuenta, double saldoPesos, double descubierto, Cliente clienteAsociado) {
         super(numeroCuenta, saldoPesos, clienteAsociado);
-        this.descubierto = descubierto;
+
+        if (saldoPesos < 0) {
+            throw new IllegalArgumentException("El saldo no puede ser negativo.");
+        }
+        this.descubierto = 200000;
     }
 
     public void depositarCheque(Cheque cheque) {
@@ -27,16 +31,26 @@ public class CuentaCorriente extends Cuenta {
         }
     }
 
-    public void extraerEfectivo(double saldoPesos) {
-        extraerEfectivo(saldoPesos);
+    public void extraerEfectivo(double montoAextraer) {
+        if (montoAextraer <= 0) {
+            throw new IllegalArgumentException("El monto a extraer debe ser positivo.");
+        } else if (montoAextraer > getSaldoPesos() + descubierto) {
+            throw new IllegalArgumentException("El monto a extraer es mayor al saldo disponible.");
+        } else {
+            setSaldoPesos(getSaldoPesos() - montoAextraer);
 
-        System.out.printf("Extracción realizada de manera exitosa!!!. Nuevo saldo: %.2f", getSaldoPesos());
+            System.out.printf("Extracción realizada de manera exitosa!!!. Nuevo saldo: %.2f", getSaldoPesos());
+        }
     }
 
-    public void depositarEfectivo(double saldoPesos) {
-        depositarEfectivo(saldoPesos);
+    public void depositarEfectivo(double montoAdepositar) {
+        if (montoAdepositar > 0) {
+            setSaldoPesos(getSaldoPesos() + montoAdepositar);
+            System.out.printf("Depósito realizado de manera exitosa!!!. Nuevo saldo: %.2f", getSaldoPesos());
+        } else {
+            throw new IllegalArgumentException("El monto a depositar debe ser positivo.");
+        }
 
-        System.out.printf("Depósito realizado de manera exitosa!!!. Nuevo saldo: %.2f", getSaldoPesos());
     }
 
 }

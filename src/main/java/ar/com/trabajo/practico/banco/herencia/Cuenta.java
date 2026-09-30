@@ -13,11 +13,11 @@ public abstract class Cuenta {
     private Cliente clienteAsociado; // polimorfismo para referenciar a la clase abstracta y obtener los datos del
                                      // cliente (atributos de la clase Cliente) y obtener los datos del cliente
                                      // (Nombre, apellido y DNI)
-    private double saldoPesos; // saldo en pesos de la cuenta
+    protected double saldoPesos; // saldo en pesos de la cuenta
 
     public Cuenta(int numeroCuenta, double saldoPesos, Cliente clienteAsociado) {
         this.numeroCuenta = numeroCuenta;
-        this.saldoPesos = saldoPesos;
+        this.saldoPesos = 0.0;
         this.clienteAsociado = clienteAsociado; // cliente asociado a la cuenta
     }
 
