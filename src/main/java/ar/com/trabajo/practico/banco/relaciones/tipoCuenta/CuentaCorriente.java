@@ -1,5 +1,7 @@
 package ar.com.trabajo.practico.banco.relaciones.tipoCuenta;
 
+import java.time.LocalDate;
+
 import ar.com.trabajo.practico.banco.herencia.Cliente;
 import ar.com.trabajo.practico.banco.herencia.Cuenta;
 import ar.com.trabajo.practico.banco.relaciones.Cheque;
@@ -18,7 +20,7 @@ public class CuentaCorriente extends Cuenta {
         super(numeroCuenta, saldoPesos, clienteAsociado);
 
         if (saldoPesos < 0) {
-            throw new IllegalArgumentException("El saldo no puede ser negativo.");
+            System.out.println("El saldo no puede ser negativo.");
         }
         this.descubierto = 200000;
     }
@@ -27,15 +29,15 @@ public class CuentaCorriente extends Cuenta {
         if (cheque.getMonto() > 0) {
             depositarEfectivo(cheque.getMonto());
             System.out.printf("Depósito de %.2f realizado exitosamente. Saldo actual: %.2f%n", cheque.getMonto(),
-                    getSaldoPesos());
+                    getSaldoPesos(), "\n" + "En la fecha " + LocalDate.now());
         }
     }
 
     public void extraerEfectivo(double montoAextraer) {
         if (montoAextraer <= 0) {
-            throw new IllegalArgumentException("El monto a extraer debe ser positivo.");
+            System.out.println("El monto a extraer debe ser positivo.");
         } else if (montoAextraer > getSaldoPesos() + descubierto) {
-            throw new IllegalArgumentException("El monto a extraer es mayor al saldo disponible.");
+            System.out.println("El monto a extraer es mayor al saldo disponible.");
         } else {
             setSaldoPesos(getSaldoPesos() - montoAextraer);
 
@@ -48,7 +50,7 @@ public class CuentaCorriente extends Cuenta {
             setSaldoPesos(getSaldoPesos() + montoAdepositar);
             System.out.printf("Depósito realizado de manera exitosa!!!. Nuevo saldo: %.2f", getSaldoPesos());
         } else {
-            throw new IllegalArgumentException("El monto a depositar debe ser positivo.");
+            System.out.println("El monto a depositar debe ser positivo.");
         }
 
     }

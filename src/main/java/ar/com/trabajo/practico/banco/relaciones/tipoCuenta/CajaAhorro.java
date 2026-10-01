@@ -11,7 +11,6 @@ import lombok.ToString;
 @ToString(callSuper = true)
 
 public class CajaAhorro extends Cuenta {
-    private double saldoPesos;
     private double tasaInteres;
 
     public CajaAhorro(int numeroCuenta, double saldoPesos, double tasaInteres, Cliente clienteAsociado) {

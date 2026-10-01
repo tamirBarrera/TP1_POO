@@ -13,7 +13,7 @@ public class TestClienteEmpresa {
         System.out.println("Ingrese razón social de la empresa");
         String razonSocial = sc.nextLine();
         System.out.println("Ingrese el CUIT de la empresa");
-        int cuit = sc.nextInt();
+        String cuit = sc.nextLine();
         sc.close();
 
         // Generar valor int aleatorio para numeroCliente entre 1 y 999999

@@ -15,7 +15,8 @@ public class TestClienteIndividual {
         System.out.println("Ingrese el apellido del cliente");
         String apellido = sc.nextLine();
         System.out.println("Ingrese el DNI del cliente");
-        int dni = sc.nextInt();
+        String dni = sc.nextLine();
+
         System.out.println("Ingrese su genero Masculino/Femenino con M o F");
         String genero = sc.nextLine();
 
