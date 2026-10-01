@@ -2,9 +2,6 @@
 
 La abstracción consiste en identificar las características esenciales y comportamientos comunes de una entidad del mundo real, descartando los detalles específicos o irrelevantes para ese nivel de diseño.
 
-En el sistema, se modelan dos conceptos base abstractos:
-- `Cliente`: representa a cualquier cliente del banco capturando lo esencial e invariable (como `numeroCliente`), sin entrar en muchos detalles.
-=======
 Se modelan dos conceptos base abstractos:
 - `Cliente`: representa a cualquier cliente del banco capturando lo esencial e invariable (como `numeroCliente`), sin entrar en detalles de si se trata de una persona física o una persona jurídica.
   
