@@ -1,7 +1,7 @@
 package ar.com.trabajo.practico.banco.tests.TestCrearCuenta;
 
 import ar.com.trabajo.practico.banco.relaciones.Cheque;
-import ar.com.trabajo.practico.banco.herencia.Cuenta;
+
 import ar.com.trabajo.practico.banco.relaciones.tipoCuenta.CuentaCorriente;
 
 import java.time.LocalDate;
