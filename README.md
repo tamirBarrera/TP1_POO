@@ -1,10 +1,18 @@
+<<<<<<< HEAD:README-POO.md
 
+=======
+>>>>>>> 2030532bf4a65d03db6f17ab46bc42591dd15d7d:README.md
 ## Abstracción
 
 La abstracción consiste en identificar las características esenciales y comportamientos comunes de una entidad del mundo real, descartando los detalles específicos o irrelevantes para ese nivel de diseño.
 
+<<<<<<< HEAD:README-POO.md
 En el sistema, se modelan dos conceptos base abstractos:
 - `Cliente`: representa a cualquier cliente del banco capturando lo esencial e invariable (como `numeroCliente`), sin entrar en muchos detalles.
+=======
+Se modelan dos conceptos base abstractos:
+- `Cliente`: representa a cualquier cliente del banco capturando lo esencial e invariable (como `numeroCliente`), sin entrar en detalles de si se trata de una persona física o una persona jurídica.
+>>>>>>> 2030532bf4a65d03db6f17ab46bc42591dd15d7d:README.md
 - `Cuenta`: modela el concepto general de una cuenta bancaria con su identificador (`numeroCuenta`), el titular asociado (`clienteAsociado`) y el estado financiero (`saldoPesos`), además de definir que toda cuenta debe operar mediante depósitos y extracciones sin imponer cómo lo hace cada tipo específico.
 
 ## Clases Abstractas en el Sistema
