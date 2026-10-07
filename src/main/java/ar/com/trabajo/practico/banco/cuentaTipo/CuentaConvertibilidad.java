@@ -14,9 +14,9 @@ public class CuentaConvertibilidad extends CuentaCorriente {
 
     private double saldoDolares;
 
-    public CuentaConvertibilidad(int numeroCuenta, double saldoDolares, Cliente clienteAsociado,
-            double descubierto) {
-        super(numeroCuenta, clienteAsociado);
+    public CuentaConvertibilidad(int numeroCuenta, Cliente clienteAsociado, double descubierto,
+            double saldoDolares) {
+        super(numeroCuenta, clienteAsociado, descubierto);
 
         this.saldoDolares = saldoDolares;
 
@@ -27,9 +27,12 @@ public class CuentaConvertibilidad extends CuentaCorriente {
     }
 
     public void depositarDolares(double monto) {
-        saldoDolares += monto;
-
-        System.out.printf("Depósito de %.2f realizado exitosamente. Saldo actual: %.2f%n", monto, getSaldoPesos());
+        if (monto > 0) {
+            saldoDolares += monto;
+            System.out.printf("Depósito de %.2f realizado exitosamente. Saldo actual: %.2f%n", monto, getSaldoPesos());
+        } else {
+            System.out.println("El monto a depositar debe ser positivo.");
+        }
     }
 
     public void extraerDolares(double monto) {

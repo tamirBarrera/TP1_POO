@@ -12,6 +12,11 @@ import lombok.ToString;
 public class CajaAhorro extends Cuenta {
     private double tasaInteres;
 
+    public CajaAhorro(int numeroCuenta, Cliente clienteAsociado, double tasaInteres) {
+        super(numeroCuenta, clienteAsociado);
+        this.tasaInteres = tasaInteres;
+    }
+
     public CajaAhorro(int numeroCuenta, Cliente clienteAsociado) {
         super(numeroCuenta, clienteAsociado);
     }

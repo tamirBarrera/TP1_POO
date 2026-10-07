@@ -15,10 +15,13 @@ import lombok.ToString;
 public class CuentaCorriente extends Cuenta {
     private double descubierto;
 
-    public CuentaCorriente(int numeroCuenta, Cliente clienteAsociado) {
+    public CuentaCorriente(int numeroCuenta, Cliente clienteAsociado, double descubierto) {
         super(numeroCuenta, clienteAsociado);
-        this.descubierto = 200000;
-        
+        this.descubierto = descubierto;
+    }
+
+    public CuentaCorriente(int numeroCuenta, Cliente clienteAsociado) {
+        this(numeroCuenta, clienteAsociado, 200000);
     }
 
     public void depositarCheque(Cheque cheque) {
