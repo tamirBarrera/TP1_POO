@@ -1,10 +1,10 @@
-package ar.com.trabajo.practico.banco.tests.TestCrearCuenta;
-
-import ar.com.trabajo.practico.banco.relaciones.Cheque;
-import ar.com.trabajo.practico.banco.relaciones.tipoCuenta.CuentaCorriente;
+package ar.com.trabajo.practico.banco.tests.testCrearCuenta;
 
 import java.time.LocalDate;
 import java.util.Scanner;
+
+import ar.com.trabajo.practico.banco.Cheque;
+import ar.com.trabajo.practico.banco.cuentaTipo.CuentaCorriente;
 
 public class TestCrearCuentaCorriente {
 
@@ -16,10 +16,7 @@ public class TestCrearCuentaCorriente {
         int numeroCuenta = sc.nextInt();
         sc.nextLine();
 
-        double saldoPesos = 0;
-        double descubierto = 200000;
-
-        CuentaCorriente cuentaCorriente = new CuentaCorriente(numeroCuenta, saldoPesos, descubierto, null);
+        CuentaCorriente cuentaCorriente = new CuentaCorriente(numeroCuenta, null);
 
         System.out.println("Cuenta corriente ingresada correctamente: ");
 

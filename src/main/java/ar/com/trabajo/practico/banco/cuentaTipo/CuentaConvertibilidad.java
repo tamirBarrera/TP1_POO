@@ -1,7 +1,7 @@
-package ar.com.trabajo.practico.banco.relaciones.tipoCuenta;
+package ar.com.trabajo.practico.banco.cuentaTipo;
 
-import ar.com.trabajo.practico.banco.herencia.Cliente;
-import ar.com.trabajo.practico.banco.relaciones.tipoCliente.ClienteEmpresa;
+import ar.com.trabajo.practico.banco.clienteTipo.Cliente;
+import ar.com.trabajo.practico.banco.clienteTipo.ClienteEmpresa;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,15 +14,9 @@ public class CuentaConvertibilidad extends CuentaCorriente {
 
     private double saldoDolares;
 
-    public CuentaConvertibilidad(int numeroCuenta, double saldoPesos, double saldoDolares, Cliente clienteAsociado,
-            double descubierto, double tasaConverion) {
-        super(numeroCuenta, saldoPesos, descubierto, clienteAsociado);
-        if (saldoPesos < 0) {
-            System.out.println("El saldo no puede ser negativo.");
-        }
-        if (saldoDolares < 0) {
-            System.out.println("El saldo en dolares no puede ser negativo.");
-        }
+    public CuentaConvertibilidad(int numeroCuenta, double saldoDolares, Cliente clienteAsociado,
+            double descubierto) {
+        super(numeroCuenta, clienteAsociado);
 
         this.saldoDolares = saldoDolares;
 
@@ -63,18 +57,18 @@ public class CuentaConvertibilidad extends CuentaCorriente {
         if (monto <= 0) {
             System.out.println("El monto a depositar debe ser positivo.");
         }
-        setSaldoPesos(saldoPesos + monto);
+        setSaldoPesos(getSaldoPesos() + monto);
         System.out.printf("Depósito realizado de manera exitosa!!!. Nuevo saldo: %.2f", getSaldoPesos());
     }
 
     public void convertirPesosADolares(double monto, double tasaConverionCompra) {
-        if (monto > 0 && saldoPesos >= monto) {
+        if (monto > 0 && getSaldoPesos() >= monto) {
             double dolaresConvertidos = monto / tasaConverionCompra;
-            setSaldoPesos(saldoPesos - monto);
-            setSaldoDolares(saldoDolares + dolaresConvertidos);
+            setSaldoPesos(getSaldoPesos() - monto);
+            setSaldoDolares(getSaldoDolares() + dolaresConvertidos);
 
             System.out.printf("Conversion de %.2f pesos a %.2f dolares realizada exitosamente. Nuevo saldo: %.2f",
-                    monto, dolaresConvertidos, saldoPesos);
+                    monto, dolaresConvertidos, getSaldoPesos());
         } else {
             System.out.println("Saldo insuficiente para realizar la conversión.");
         }
@@ -84,10 +78,10 @@ public class CuentaConvertibilidad extends CuentaCorriente {
     public void convertirDolaresAPesos(double monto, double tasaConverionVenta) {
         if (monto > 0 && saldoDolares >= monto) {
             double pesosConvertidos = monto * tasaConverionVenta;
-            setSaldoPesos(saldoPesos + pesosConvertidos);
-            setSaldoDolares(saldoDolares - monto);
+            setSaldoPesos(getSaldoPesos() + pesosConvertidos);
+            setSaldoDolares(getSaldoDolares() - monto);
             System.out.printf("Conversion de %.2f dolares a %.2f pesos realizada exitosamente. Nuevo saldo: %.2f",
-                    monto, pesosConvertidos, saldoDolares);
+                    monto, pesosConvertidos, getSaldoPesos());
         } else {
             System.out.println("Saldo insuficiente para realizar la conversión.");
         }

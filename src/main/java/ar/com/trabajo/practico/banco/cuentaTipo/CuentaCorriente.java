@@ -1,10 +1,9 @@
-package ar.com.trabajo.practico.banco.relaciones.tipoCuenta;
+package ar.com.trabajo.practico.banco.cuentaTipo;
 
 import java.time.LocalDate;
 
-import ar.com.trabajo.practico.banco.herencia.Cliente;
-import ar.com.trabajo.practico.banco.herencia.Cuenta;
-import ar.com.trabajo.practico.banco.relaciones.Cheque;
+import ar.com.trabajo.practico.banco.Cheque;
+import ar.com.trabajo.practico.banco.clienteTipo.Cliente;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -16,13 +15,10 @@ import lombok.ToString;
 public class CuentaCorriente extends Cuenta {
     private double descubierto;
 
-    public CuentaCorriente(int numeroCuenta, double saldoPesos, double descubierto, Cliente clienteAsociado) {
-        super(numeroCuenta, saldoPesos, clienteAsociado);
-
-        if (saldoPesos < 0) {
-            System.out.println("El saldo no puede ser negativo.");
-        }
+    public CuentaCorriente(int numeroCuenta, Cliente clienteAsociado) {
+        super(numeroCuenta, clienteAsociado);
         this.descubierto = 200000;
+        
     }
 
     public void depositarCheque(Cheque cheque) {

@@ -1,9 +1,9 @@
-package ar.com.trabajo.practico.banco.tests.TestCrearCuenta;
+package ar.com.trabajo.practico.banco.tests.testCrearCuenta;
 
 import java.util.Scanner;
 
-import ar.com.trabajo.practico.banco.herencia.Cuenta;
-import ar.com.trabajo.practico.banco.relaciones.tipoCuenta.CajaAhorro;
+import ar.com.trabajo.practico.banco.cuentaTipo.CajaAhorro;
+import ar.com.trabajo.practico.banco.cuentaTipo.Cuenta;
 
 public class TestCrearCuentaAhorro {
 
@@ -15,10 +15,8 @@ public class TestCrearCuentaAhorro {
         int numeroCuenta = sc.nextInt();
 
         double saldoPesos = 0;
-        double tasaInteres = 0.25; // El valor del interes se lo doy manualmente para que varie
-                                   // en vez de hacerlo static final.
 
-        Cuenta cuentaAhorro = new CajaAhorro(numeroCuenta, saldoPesos, tasaInteres, null);
+        Cuenta cuentaAhorro = new CajaAhorro(numeroCuenta, null);
 
         System.out.println("Cuenta de Ahorro generada exitosamente: " + cuentaAhorro);
 

@@ -1,6 +1,5 @@
-package ar.com.trabajo.practico.banco.relaciones.tipoCliente;
+package ar.com.trabajo.practico.banco.clienteTipo;
 
-import ar.com.trabajo.practico.banco.herencia.Cliente;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

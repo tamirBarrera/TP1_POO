@@ -1,8 +1,9 @@
-package ar.com.trabajo.practico.banco.tests.TestCrearCliente;
+package ar.com.trabajo.practico.banco.tests.testCrearCliente;
 
 import java.util.Scanner;
-import ar.com.trabajo.practico.banco.herencia.Cliente;
-import ar.com.trabajo.practico.banco.relaciones.tipoCliente.ClienteEmpresa;
+
+import ar.com.trabajo.practico.banco.clienteTipo.Cliente;
+import ar.com.trabajo.practico.banco.clienteTipo.ClienteEmpresa;
 
 public class TestClienteEmpresa {
 

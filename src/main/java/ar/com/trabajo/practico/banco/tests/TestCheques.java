@@ -1,8 +1,9 @@
 package ar.com.trabajo.practico.banco.tests;
 
-import ar.com.trabajo.practico.banco.relaciones.Cheque;
 import java.time.LocalDate;
 import java.util.Scanner;
+
+import ar.com.trabajo.practico.banco.Cheque;
 
 public class TestCheques {
 

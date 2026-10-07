@@ -1,8 +1,9 @@
-package ar.com.trabajo.practico.banco.tests.TestCrearCuenta;
+package ar.com.trabajo.practico.banco.tests.testCrearCuenta;
 
-import ar.com.trabajo.practico.banco.herencia.Cuenta;
-import ar.com.trabajo.practico.banco.relaciones.tipoCuenta.CuentaCorriente;
 import java.util.Scanner;
+
+import ar.com.trabajo.practico.banco.cuentaTipo.Cuenta;
+import ar.com.trabajo.practico.banco.cuentaTipo.CuentaCorriente;
 
 public class TestCrearCuentaConvertibilidad {
 
@@ -14,10 +15,7 @@ public class TestCrearCuentaConvertibilidad {
         int numeroCuenta = sc.nextInt();
         sc.nextLine();
 
-        double saldoPesos = 0;
-        double descubierto = 200000;
-
-        Cuenta cuentaConvertibilidad = new CuentaCorriente(numeroCuenta, saldoPesos, descubierto, null);
+        Cuenta cuentaConvertibilidad = new CuentaCorriente(numeroCuenta, null);
 
         System.out.println("Cuenta de Convertibilidad generada exitosamente: " + cuentaConvertibilidad);
 
