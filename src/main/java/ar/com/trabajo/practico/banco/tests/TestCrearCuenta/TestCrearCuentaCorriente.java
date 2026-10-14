@@ -1,4 +1,4 @@
-package ar.com.trabajo.practico.banco.tests.testCrearCuenta;
+package ar.com.trabajo.practico.banco.tests.testcrearcuenta;
 
 import java.time.LocalDate;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package ar.com.trabajo.practico.banco.cuentaTipo;
+package ar.com.trabajo.practico.banco.cuentatipo;
 
 import ar.com.trabajo.practico.banco.clienteTipo.Cliente;
 import lombok.Getter;

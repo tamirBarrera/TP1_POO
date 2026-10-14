@@ -1,4 +1,4 @@
-package ar.com.trabajo.practico.banco.tests.testCrearCliente;
+package ar.com.trabajo.practico.banco.tests.testcrearcliente;
 
 import java.util.Scanner;
 
