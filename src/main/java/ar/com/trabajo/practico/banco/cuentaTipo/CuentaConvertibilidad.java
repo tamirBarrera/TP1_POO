@@ -1,7 +1,7 @@
 package ar.com.trabajo.practico.banco.cuentatipo;
 
-import ar.com.trabajo.practico.banco.clienteTipo.Cliente;
-import ar.com.trabajo.practico.banco.clienteTipo.ClienteEmpresa;
+import ar.com.trabajo.practico.banco.clientetipo.Cliente;
+import ar.com.trabajo.practico.banco.clientetipo.ClienteEmpresa;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -43,25 +43,6 @@ public class CuentaConvertibilidad extends CuentaCorriente {
         } else {
             System.out.println("Saldo insuficiente para realizar la extracción.");
         }
-    }
-
-    public void extraerEfectivo(double monto) {
-        if (monto <= 0) {
-            System.out.println("El monto a extraer debe ser positivo.");
-        } else if (getSaldoPesos() + getDescubierto() < monto) {
-            System.out.println("El monto a extraer es mayor al saldo disponible.");
-        } else {
-            setSaldoPesos(getSaldoPesos() - monto);
-            System.out.printf("Extracción realizada de manera exitosa!!!. Nuevo saldo: %.2f", getSaldoPesos());
-        }
-    }
-
-    public void depositarEfectivo(double monto) {
-        if (monto <= 0) {
-            System.out.println("El monto a depositar debe ser positivo.");
-        }
-        setSaldoPesos(getSaldoPesos() + monto);
-        System.out.printf("Depósito realizado de manera exitosa!!!. Nuevo saldo: %.2f", getSaldoPesos());
     }
 
     public void convertirPesosADolares(double monto, double tasaConverionCompra) {

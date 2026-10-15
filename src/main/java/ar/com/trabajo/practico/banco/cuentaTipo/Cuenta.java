@@ -1,28 +1,43 @@
 package ar.com.trabajo.practico.banco.cuentatipo;
 
-import ar.com.trabajo.practico.banco.clienteTipo.Cliente;
-import lombok.AccessLevel;
+import ar.com.trabajo.practico.banco.clientetipo.Cliente;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter
-@Setter(AccessLevel.PROTECTED)
+@Setter
 @ToString
 
-public abstract class Cuenta {
+public abstract class Cuenta {      // cliente (atributos de la clase Cliente)
     private final int numeroCuenta; // numero de cuenta, no se puede modificar
-    private final Cliente clienteAsociado; // polimorfismo para referenciar a la clase abstracta y obtener los datos del
-    // // cliente (atributos de la clase Cliente) y obtener los datos del cliente                           
-    // // (Nombre, apellido y DNI)
-    private double saldoPesos; // saldo en pesos de la cuenta
+    private Cliente clienteAsociado;                   
+    private double saldoPesos; // saldo en pesos de la cuenta inicializa en 0
 
     public Cuenta(int numeroCuenta, Cliente clienteAsociado) {
         this.numeroCuenta = numeroCuenta;
-        this.clienteAsociado = clienteAsociado; // cliente asociado a la cuenta
+        this.clienteAsociado = clienteAsociado; // cliente asociado a la cuenta con polimorfismo para referenciar a la clase abstracta y obtener los datos del cliente
     }
 
-    public abstract void depositarEfectivo(double monto);
+    public void depositarEfectivo(double montoAdepositar) {
+        if (montoAdepositar <= 0) {
+            System.out.println("El monto a depositar debe ser positivo.");
+        } else {
+            this.saldoPesos += montoAdepositar;
+            System.out.printf("Depósito realizado de manera exitosa!!!. Nuevo saldo: %.2f", saldoPesos);
+        }
+    }
 
-    public abstract void extraerEfectivo(double monto);
+    public void extraerEfectivo(double montoAextraer) {
+        if (montoAextraer <= 0) {
+            System.out.println("El monto a extraer debe ser positivo.");
+        } else if (montoAextraer > this.saldoPesos) {
+            System.out.println("El monto a extraer es mayor al saldo disponible.");
+        } else {
+            this.saldoPesos -= montoAextraer;
+
+            System.out.printf("Extracción realizada de manera exitosa!!!. Nuevo saldo: %.2f", saldoPesos);
+        }
+    }
+
 }

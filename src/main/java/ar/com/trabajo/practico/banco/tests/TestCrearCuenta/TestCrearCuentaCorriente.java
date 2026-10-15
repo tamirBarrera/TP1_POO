@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 import ar.com.trabajo.practico.banco.Cheque;
-import ar.com.trabajo.practico.banco.cuentaTipo.CuentaCorriente;
+import ar.com.trabajo.practico.banco.cuentatipo.CuentaCorriente;
 
 public class TestCrearCuentaCorriente {
 

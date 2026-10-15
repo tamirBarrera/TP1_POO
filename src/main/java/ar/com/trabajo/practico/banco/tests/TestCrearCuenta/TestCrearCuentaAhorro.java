@@ -1,9 +1,9 @@
-package ar.com.trabajo.practico.banco.tests.testCrearCuenta;
+package ar.com.trabajo.practico.banco.tests.testcrearcuenta;
 
 import java.util.Scanner;
 
-import ar.com.trabajo.practico.banco.cuentaTipo.CajaAhorro;
-import ar.com.trabajo.practico.banco.cuentaTipo.Cuenta;
+import ar.com.trabajo.practico.banco.cuentatipo.CajaAhorro;
+import ar.com.trabajo.practico.banco.cuentatipo.Cuenta;
 
 public class TestCrearCuentaAhorro {
 
@@ -16,7 +16,7 @@ public class TestCrearCuentaAhorro {
 
         double saldoPesos = 0;
 
-        Cuenta cuentaAhorro = new CajaAhorro(numeroCuenta, null);
+        Cuenta cuentaAhorro = new CajaAhorro(numeroCuenta, 0.1);
 
         System.out.println("Cuenta de Ahorro generada exitosamente: " + cuentaAhorro);
 

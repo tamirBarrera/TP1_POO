@@ -2,8 +2,8 @@ package ar.com.trabajo.practico.banco.tests.testcrearcuenta;
 
 import java.util.Scanner;
 
-import ar.com.trabajo.practico.banco.cuentaTipo.Cuenta;
-import ar.com.trabajo.practico.banco.cuentaTipo.CuentaCorriente;
+import ar.com.trabajo.practico.banco.cuentatipo.Cuenta;
+import ar.com.trabajo.practico.banco.cuentatipo.CuentaCorriente;
 
 public class TestCrearCuentaConvertibilidad {
 
