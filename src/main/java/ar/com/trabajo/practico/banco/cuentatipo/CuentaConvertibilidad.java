@@ -51,7 +51,7 @@ public class CuentaConvertibilidad extends CuentaCorriente {
         if (monto > 0 && getSaldoPesos() >= monto) {
             double dolaresConvertidos = monto / tasaConversionCompra;
             setSaldoPesos(getSaldoPesos() - monto);
-            setSaldoDolares(getSaldoDolares() + dolaresConvertidos);
+            this.saldoDolares += dolaresConvertidos;
 
             System.out.printf("Conversion de %.2f pesos a %.2f dolares realizada exitosamente. Nuevo saldo: %.2f",
                     monto, dolaresConvertidos, getSaldoPesos());
@@ -65,7 +65,7 @@ public class CuentaConvertibilidad extends CuentaCorriente {
         if (monto > 0 && saldoDolares >= monto) {
             double pesosConvertidos = monto * tasaConversionVenta;
             setSaldoPesos(getSaldoPesos() + pesosConvertidos);
-            setSaldoDolares(getSaldoDolares() - monto);
+            this.saldoDolares -= monto;
             System.out.printf("Conversion de %.2f dolares a %.2f pesos realizada exitosamente. Nuevo saldo: %.2f",
                     monto, pesosConvertidos, getSaldoPesos());
         } else {

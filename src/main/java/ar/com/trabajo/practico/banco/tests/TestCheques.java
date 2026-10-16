@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import ar.com.trabajo.practico.banco.Cheque;
 
-public class Testcheques {
+public class TestCheques {
 
     public static void main(String[] args) {
 
