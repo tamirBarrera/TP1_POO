@@ -56,10 +56,9 @@ public class TestCrearCuentaConvertibilidad {
             numeroCuenta = sc.nextInt();
             cuentaSeleccionada = buscarCuenta(cuentas, numeroCuenta);
         }
+        sc.nextLine();
 
         System.out.println("Cuenta de Convertibilidad inicializada exitosamente: ");
-
-        System.out.println("------------------------------");
 
         System.out.println("Desea realizar un deposito, extraccion o conversion? Y/N");
         String respuesta = sc.nextLine();
