@@ -21,5 +21,5 @@ public class CajaAhorro extends Cuenta {
         depositarEfectivo(getSaldoPesos() * tasaInteres);
         System.out.printf("Intereses cobrados de manera exitosa!!!. Nuevo saldo: %.2f", getSaldoPesos());
     }
-    
+
 }

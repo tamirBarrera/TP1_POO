@@ -26,7 +26,7 @@ public class ClienteIndividual extends Cliente {
             if (apellido.length() > 1 && apellido.length() < 50) {
                 System.out.println("Apellido ingresado de manera correcta");
 
-                if (dni.length() < 7 && dni.length() > 8) {
+                if (dni.length() >= 7 && dni.length() <= 8) {
                     System.out.println("Dni ingresado de manera correcta");
                     if (genero == "M" || genero == "F") {
                         System.out.println("Genero ingresado de manera correcta");

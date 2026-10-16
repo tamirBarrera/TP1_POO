@@ -9,32 +9,33 @@ import lombok.ToString;
 @Setter
 @ToString
 
-public abstract class Cuenta {      // cliente (atributos de la clase Cliente)
+public abstract class Cuenta { // cliente (atributos de la clase Cliente)
     private final int numeroCuenta; // numero de cuenta, no se puede modificar
-    private Cliente clienteAsociado;                   
+    private final Cliente clienteAsociado; // el atributo clienteAsociado es una referencia a un objeto de la clase
+                                        // Cliente, es final porque no se puede cambiar el cliente asociado a la cuenta
     private double saldoPesos; // saldo en pesos de la cuenta inicializa en 0
 
     public Cuenta(int numeroCuenta, Cliente clienteAsociado) {
         this.numeroCuenta = numeroCuenta;
-        this.clienteAsociado = clienteAsociado; // cliente asociado a la cuenta con polimorfismo para referenciar a la clase abstracta y obtener los datos del cliente
+        this.clienteAsociado = clienteAsociado; 
     }
 
-    public void depositarEfectivo(double montoAdepositar) {
-        if (montoAdepositar <= 0) {
+    public void depositarEfectivo(double monto) {
+        if (monto <= 0) {
             System.out.println("El monto a depositar debe ser positivo.");
         } else {
-            this.saldoPesos += montoAdepositar;
+            this.saldoPesos += monto;
             System.out.printf("Depósito realizado de manera exitosa!!!. Nuevo saldo: %.2f", saldoPesos);
         }
     }
 
-    public void extraerEfectivo(double montoAextraer) {
-        if (montoAextraer <= 0) {
+    public void extraerEfectivo(double monto) {
+        if (monto <= 0) {
             System.out.println("El monto a extraer debe ser positivo.");
-        } else if (montoAextraer > this.saldoPesos) {
+        } else if (monto > this.saldoPesos) {
             System.out.println("El monto a extraer es mayor al saldo disponible.");
         } else {
-            this.saldoPesos -= montoAextraer;
+            this.saldoPesos -= monto;
 
             System.out.printf("Extracción realizada de manera exitosa!!!. Nuevo saldo: %.2f", saldoPesos);
         }

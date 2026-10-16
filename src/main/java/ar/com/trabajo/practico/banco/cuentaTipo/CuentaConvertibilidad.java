@@ -14,14 +14,16 @@ public class CuentaConvertibilidad extends CuentaCorriente {
 
     private double saldoDolares;
 
-    public CuentaConvertibilidad(int numeroCuenta, Cliente clienteAsociado, double descubierto,
-            double saldoDolares) {
+    public CuentaConvertibilidad(int numeroCuenta, Cliente clienteAsociado, double descubierto) {
         super(numeroCuenta, clienteAsociado, descubierto);
 
-        this.saldoDolares = saldoDolares;
+        // validacion para que la cuenta convertibilidad sea creada unicamente por
+        // empresas y retorne un objeto nulo si no lo es
 
         if (!(clienteAsociado instanceof ClienteEmpresa)) {
-            System.out.println("La cuenta convertibilidad solo puede ser abierta por empresas");
+            throw new IllegalArgumentException("La cuenta convertibilidad solo puede ser abierta por empresas");
+        } else {
+            System.out.println("Cuenta de convertibilidad creada exitosamente");
         }
 
     }
@@ -45,9 +47,9 @@ public class CuentaConvertibilidad extends CuentaCorriente {
         }
     }
 
-    public void convertirPesosADolares(double monto, double tasaConverionCompra) {
+    public void convertirPesosADolares(double monto, double tasaConversionCompra) {
         if (monto > 0 && getSaldoPesos() >= monto) {
-            double dolaresConvertidos = monto / tasaConverionCompra;
+            double dolaresConvertidos = monto / tasaConversionCompra;
             setSaldoPesos(getSaldoPesos() - monto);
             setSaldoDolares(getSaldoDolares() + dolaresConvertidos);
 
@@ -59,9 +61,9 @@ public class CuentaConvertibilidad extends CuentaCorriente {
 
     }
 
-    public void convertirDolaresAPesos(double monto, double tasaConverionVenta) {
+    public void convertirDolaresAPesos(double monto, double tasaConversionVenta) {
         if (monto > 0 && saldoDolares >= monto) {
-            double pesosConvertidos = monto * tasaConverionVenta;
+            double pesosConvertidos = monto * tasaConversionVenta;
             setSaldoPesos(getSaldoPesos() + pesosConvertidos);
             setSaldoDolares(getSaldoDolares() - monto);
             System.out.printf("Conversion de %.2f dolares a %.2f pesos realizada exitosamente. Nuevo saldo: %.2f",
